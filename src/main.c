@@ -617,7 +617,7 @@ static int MonitorThread(SceSize args, void *argp) {
         pspSdkSetK1(oldK1);
 
         if (got > 0 && cameraReady) {
-            float rx = gameAxis(pad.Rsrv[0]);
+            float rx = -gameAxis(pad.Rsrv[0]);
             float ry = gameAxis(pad.Rsrv[1]);
             u32 flags = 0;
             if (rx != 0.0f) flags |= 1u;
