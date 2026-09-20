@@ -1,7 +1,0 @@
-diff --git a/src/main.c b/src/main.c
---- a/src/main.c
-+++ b/src/main.c
-@@
--            float rx = gameAxis(pad.Rsrv[0]);
-+            float rx = -gameAxis(pad.Rsrv[0]);
-             float ry = gameAxis(pad.Rsrv[1]);
