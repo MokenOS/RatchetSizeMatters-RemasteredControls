@@ -1,1 +1,42 @@
+name: Build PSP Plugin
 
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    container:
+      image: pspdev/pspdev:latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Ensure PSP CFW SDK is installed
+        run: |
+          psp-pacman -Sy --noconfirm psp-cfw-sdk
+
+      - name: Show toolchain
+        run: |
+          psp-gcc --version
+          echo "PSPDEV=$PSPDEV"
+          echo "PSPSDK=$(psp-config --pspsdk-path)"
+
+      - name: Build PRX
+        run: |
+          make clean
+          make -j2
+
+      - name: Upload compiled plugin
+        uses: actions/upload-artifact@v4
+        with:
+          name: ratchet-remastered-controls
+          path: ratchet_remastered.prx
+          if-no-files-found: error
