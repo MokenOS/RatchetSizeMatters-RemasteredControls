@@ -1,4 +1,6 @@
-# Ratchet & Clank: Size Matters — Remastered Controls
+# Ratchet & Clank: Size Matters — Remastered Controls - Uninverted
+
+--This Fork makes the Left and right/Horizontal camera movement not inverted
 
 True analog right-stick camera controls for **Ratchet & Clank: Size Matters** on PS Vita through Adrenaline/Epinephrine.
 
